@@ -17,8 +17,12 @@ jobs:
       - name: remote add
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
+          GIT_USER_EMAIL: kei.kyoto.be.amb@gmail.com
+          GIT_USER_NAME: olachinkei
         run: |
           echo "Cloning destination git repository"
+          git config --global user.email "$GIT_USER_EMAIL"
+          git config --global user.name "$GIT_USER_NAME"
           CLONE_DIR=$(mktemp -d)
           git clone https://olachinkei:$HF_TOKEN@huggingface.co/spaces/olachinkei/covid-doc-search "$CLONE_DIR"
           ls -la "$CLONE_DIR"
