@@ -145,7 +145,8 @@ with gr.Blocks() as demo:
 
     """)
     gr.Markdown(
-        csv_to_markdown("doc_list.csv")
+        csv_to_markdown("src/doc_list.csv")
+        #csv_to_markdown("doc_list.csv")
     )
     
 
