@@ -12,6 +12,7 @@ src/vector_store
 src/wandb
 .DS_Store
 src/chroma/index
+src/originaldoc
 
 # Distribution / packaging
 .Python
