@@ -72,21 +72,33 @@ class Chat:
         return response
     
 def csv_to_markdown(csv_file):
-    with open(csv_file, "r") as file:
-        df = pd.read_csv(csv_file)
+    df = pd.read_csv(csv_file)
     markdown_table = df.to_markdown(index=False)
     return markdown_table
 
 
-csv_file_path = "path/to/your/csv/file.csv"
-markdown_table = csv_to_markdown(csv_file_path)
-print(markdown_table)
 
 with gr.Blocks() as demo:
+    gr.HTML(
+        """<div style="text-align: center; max-width: 700px; margin: 0 auto;">
+        <div
+        style="
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.75rem;
+        "
+        >
+        <h1 style="font-weight: 900; margin-bottom: 7px; margin-top: 5px;">
+            QUICK SEARCH FROM PAPERS REGARDING COVID-19
+        </h1>
+        </div>
+    </div>"""
+    )
     with gr.Row():
             with gr.Column():
                 gr.HTML(
-                    """<b><center>QUICK SEARCH FROM PAPERS REGARDING COVID-19</center></b>
+                    """
                     <p>Papers regareding COVID-19 are stored behind this chatbot. This chatbot is not intended for a clinical advice tool, but for just a search assistant.</p>
                     <p>Please make sure to read the original document by tracking the source before conclusion.</p>""")
 
@@ -127,17 +139,19 @@ with gr.Blocks() as demo:
     
     gr.Markdown(
     """
-    # List of papers stored in data base
-    
+
+    ## List of papers stored in data base
+    When you submit your question, the related information started to be searched from the following papers.
+
     """)
     gr.Markdown(
-    csv_to_markdown("doc_list.csv")
+        csv_to_markdown("doc_list.csv")
     )
     
 
 if __name__ == "__main__":
     demo.launch(
-        show_error=True,debug=True
-        #share=True, server_name="0.0.0.0", server_port=8884, show_error=True,debug=True
+        #show_error=True,debug=True
+        share=True, server_name="0.0.0.0", server_port=8884, show_error=True,debug=True
     )
     demo.integrate(wandb=wandb)
