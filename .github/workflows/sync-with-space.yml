@@ -17,12 +17,10 @@ jobs:
       - name: remote add
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-          HF_USERNAME: "olachinkei"  
-          HF_SPACE: "covid-doc-search" 
         run: |
           echo "Cloning destination git repository"
           CLONE_DIR=$(mktemp -d)
-          git clone "https://$HF_USERNAME:$HF_TOKEN@$HF_SPACE" "$CLONE_DIR"
+          git clone https://olachinkei:$HF_TOKEN@huggingface.co/spaces/olachinkei/covid-doc-search "$CLONE_DIR"
           ls -la "$CLONE_DIR"
           echo "Copy contents to clone git repository"
           cp -rf * "$CLONE_DIR"
@@ -40,6 +38,5 @@ jobs:
           echo "git diff-index:"
           git diff-index --quiet HEAD || git commit --message "$COMMIT_MESSAGE"
           echo "git push origin:"
-          git push "https://$HF_USERNAME:$HF_TOKEN@$HF_SPACE" "$TARGET_BRANCH"
-
+          git push https://olachinkei:$HF_TOKEN@huggingface.co/spaces/olachinkei/covid-doc-search main
 
