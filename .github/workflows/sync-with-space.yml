@@ -17,4 +17,5 @@ jobs:
       - name: Push to hub
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
-        run: git push --force https://olachinkei:$HF_TOKEN@huggingface.co/spaces/olachinkei/covid-doc-search main
+        run: git remote add space https://olachinkei:$HF_TOKEN@huggingface.co/spaces/olachinkei/covid-doc-search
+        run: git push --force space main
