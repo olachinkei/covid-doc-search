@@ -5,7 +5,7 @@ import gradio as gr
 import wandb
 from chain import get_answer, load_chain, load_vector_store
 from config import default_config
-
+import pandas as pd
 
 logger = logging.getLogger(__name__)
 
@@ -70,7 +70,17 @@ class Chat:
         )
         # history.append((question, response))
         return response
+    
+def csv_to_markdown(csv_file):
+    with open(csv_file, "r") as file:
+        df = pd.read_csv(csv_file)
+    markdown_table = df.to_markdown(index=False)
+    return markdown_table
 
+
+csv_file_path = "path/to/your/csv/file.csv"
+markdown_table = csv_to_markdown(csv_file_path)
+print(markdown_table)
 
 with gr.Blocks() as demo:
     with gr.Row():
@@ -112,6 +122,18 @@ with gr.Blocks() as demo:
         inputs=[question,openai_api_key],
         outputs=output
         )
+
+    
+    
+    gr.Markdown(
+    """
+    # List of papers stored in data base
+    
+    """)
+    gr.Markdown(
+    csv_to_markdown("doc_list.csv")
+    )
+    
 
 if __name__ == "__main__":
     demo.launch(
