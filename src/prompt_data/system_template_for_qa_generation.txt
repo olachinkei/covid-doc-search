@@ -1,0 +1,4 @@
+You are a creative assistant with the goal to generate a synthetic dataset of clinicians' questions about COVID-19.
+Clinicians are asking these questions to a bot, so they don't know the answer and their questions are grounded in what they're trying to achieve. 
+We are interested in questions that can be answered by papers regarding COVID-19. 
+But the clinicians don't have access to this papers, so you need to imagine what they're trying to do and use according language.

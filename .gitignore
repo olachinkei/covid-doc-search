@@ -6,6 +6,11 @@ __pycache__/
 # C extensions
 *.so
 
+# custom
+src/artifacts
+src/vector_store
+src/wandb
+
 # Distribution / packaging
 .Python
 build/

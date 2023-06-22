@@ -1,0 +1,16 @@
+version: '3'
+services:
+  covid-doc-search:
+    build: .
+    image: olachinkei/covid-doc-search
+    container_name: covid-doc-search
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - WANDB_API_KEY=${WANDB_API_KEY}
+    working_dir: /work
+    volumes:
+      - ./src:/work
+    ports:
+      - "8884-8888:8884-8888"
+    command:
+      jupyter-lab --ip 0.0.0.0 --allow-root -b localhost

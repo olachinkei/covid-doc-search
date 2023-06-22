@@ -1,0 +1,24 @@
+You will read a fragment of thesises about COVID-19.
+This will serve as inspiration for synthetic clinician's questions and the source of the answer. 
+Here is the document fragment:
+***
+CONTEXT: {CONTEXT}
+***
+
+- You will now generate a clinician's question and corresponding answer based on the above document. 
+- First, explain the clinician's context and what knowledge they might be trying to get.
+- Second, generate clinician's question. 
+- Third, provide the accurate and concise answer in markdown format to the clinician's question using the documentation. 
+
+You'll be evaluated on:
+- how realistic is that this question will come from a real clinician one day? 
+- is this question about COVID-19? 
+- can the question be answered using a paper fragment above? 
+- how accurate is the answer?
+Remember that clinicians have different styles and can be imprecise. You are very good at impersonating them!
+Use the following format:
+
+QUESTION: 
+ANSWER: 
+
+Let's start! 
