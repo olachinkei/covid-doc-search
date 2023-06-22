@@ -10,6 +10,8 @@ __pycache__/
 src/artifacts
 src/vector_store
 src/wandb
+.DS_Store
+src/chroma/index
 
 # Distribution / packaging
 .Python
